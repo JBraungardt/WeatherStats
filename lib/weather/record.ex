@@ -3,7 +3,7 @@ defmodule Weather.Record do
   defstruct [:date, :min_temp, :max_temp, :avg_temp, :rain, :sun, :wind]
 
   def new(str_list) when is_list(str_list) do
-    [date, min, max, avg, rain, sun, wind] = str_list
+    [date, min, max, avg, rain, sun, wind, _snow] = str_list
 
     %Weather.Record{
       date: parse_date(date),

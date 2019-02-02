@@ -24,7 +24,7 @@ defmodule Weather.Stats do
     |> FileUtil.write_to_json_file("data/#{city}_stats_avg.json")
   end
 
-  defp process_month(days) do
+  def process_month(days) do
     [%Record{date: date} | _] = days
     <<year_month::binary-size(7), _rest::binary>> = Date.to_string(date)
 

@@ -31,7 +31,7 @@ defmodule Weather.Growler do
     |> FileUtil.write_to_json_file("data/#{city}.json")
   end
 
-  defp fetch(id, date, number_of_weeks \\ 6) do
+  def fetch(id, date, number_of_weeks \\ 6) do
     {:ok, resp} =
       Tesla.get(@download_url,
         query: [id: id, datum: date, t: number_of_weeks]
@@ -39,7 +39,7 @@ defmodule Weather.Growler do
 
     Floki.find(resp.body, "#extremwerte tbody tr td")
     |> Enum.map(&Floki.text/1)
-    |> Enum.chunk_every(7)
+    |> Enum.chunk_every(8)
     |> Enum.map(&Record.new/1)
   end
 end
