@@ -68,6 +68,8 @@ defmodule Weather.Stats do
     %{month => avgs}
   end
 
+  defp add_to_list(map, _key, nil), do: map
+
   defp add_to_list(map, key, new_value) do
     Map.update!(map, key, &[new_value | &1])
   end
