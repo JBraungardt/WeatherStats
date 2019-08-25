@@ -10,4 +10,28 @@ defmodule Weather do
     |> Enum.filter(&(month == &1.date.month))
     |> Weather.Stats.process_month()
   end
+
+  def show_stats_for_current_month() do
+    now = DateTime.utc_now()
+
+    show_stats_for_month(now.month, now.year)
+  end
+
+  def show_stats_for_month(month, year) do
+    IO.puts("Schweinfurt")
+
+    stats_for_month("P131", month, year)
+    |> IO.inspect()
+
+    IO.puts("")
+
+    IO.puts("Bremen")
+
+    stats_for_month(31, month, year)
+    |> IO.inspect()
+
+    nil
+  end
 end
+
+Weather.show_stats_for_current_month()
