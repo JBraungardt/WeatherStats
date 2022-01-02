@@ -11,11 +11,11 @@ defmodule Weather.Growler do
       end
 
     part_2 =
-      for year <- 2000..2018, month <- 1..12 do
+      for year <- 2000..2021, month <- 1..12 do
         {year, month}
       end
 
-    month_to_fetch = part_1 ++ part_2 ++ [{2019, 1}]
+    month_to_fetch = part_1 ++ part_2 ++ [{2022, 1}]
 
     month_to_fetch
     |> Enum.map(fn {year, month} ->
@@ -32,12 +32,15 @@ defmodule Weather.Growler do
   end
 
   def fetch(id, date, number_of_weeks \\ 6) do
+    IO.puts("fetching #{date}")
+
     {:ok, resp} =
       Tesla.get(@download_url,
         query: [id: id, datum: date, t: number_of_weeks]
       )
 
-    Floki.find(resp.body, "#extremwerte tbody tr td")
+    Floki.parse_document!(resp.body)
+    |> Floki.find("#extremwerte tbody tr td")
     |> Enum.map(&Floki.text/1)
     |> Enum.chunk_every(8)
     |> Enum.map(&Record.new/1)

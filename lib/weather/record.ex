@@ -17,6 +17,7 @@ defmodule Weather.Record do
   end
 
   def is_valid(%Weather.Record{avg_temp: -999.0}), do: false
+  def is_valid(%Weather.Record{avg_temp: nil}), do: false
   def is_valid(_), do: true
 
   defp parse_float(str) do
