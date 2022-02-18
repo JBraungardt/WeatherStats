@@ -21,7 +21,7 @@ defmodule Weather.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:tesla, "~> 1.4"},
+      {:req, "~> 0.2.1"},
       {:floki, "~> 0.32"},
       {:jason, "~> 1.3"}
     ]

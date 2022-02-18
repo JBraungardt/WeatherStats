@@ -34,9 +34,9 @@ defmodule Weather.Growler do
   def fetch(id, date, number_of_weeks \\ 6) do
     IO.puts("fetching #{date}")
 
-    {:ok, resp} =
-      Tesla.get(@download_url,
-        query: [id: id, datum: date, t: number_of_weeks]
+    resp =
+      Req.get!(@download_url,
+        params: [id: id, datum: date, t: number_of_weeks]
       )
 
     Floki.parse_document!(resp.body)

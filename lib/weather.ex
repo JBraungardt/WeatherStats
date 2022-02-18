@@ -34,4 +34,4 @@ defmodule Weather do
   end
 end
 
-Weather.show_stats_for_current_month()
+# Weather.show_stats_for_current_month()
