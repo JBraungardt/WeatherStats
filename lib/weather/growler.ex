@@ -11,11 +11,11 @@ defmodule Weather.Growler do
       end
 
     part_2 =
-      for year <- 2000..2021, month <- 1..12 do
+      for year <- 2000..2022, month <- 1..12 do
         {year, month}
       end
 
-    month_to_fetch = part_1 ++ part_2 ++ [{2022, 1}]
+    month_to_fetch = part_1 ++ part_2 ++ [{2023, 1}]
 
     month_to_fetch
     |> Enum.map(fn {year, month} ->
