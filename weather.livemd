@@ -1,0 +1,159 @@
+# weather
+
+```elixir
+Mix.install([
+  {:kino, "~> 0.9"},
+  {:jason, "~> 1.4"},
+  {:kino_vega_lite, "~> 0.1"}
+])
+```
+
+## Data
+
+```elixir
+data =
+  File.read!("F:/Git/WeatherStats/data/bremen_stats.json")
+  |> Jason.decode!(keys: :atoms)
+```
+
+```elixir
+# data_text = Kino.Input.textarea("weather data")
+```
+
+```elixir
+# data = Jason.decode!(Kino.Input.read(data_text), keys: :atoms)
+```
+
+## Filter
+
+```elixir
+month = Kino.Input.text("month")
+```
+
+```elixir
+m = Kino.Input.read(month)
+
+res =
+  data
+  |> Enum.filter(fn month ->
+    month.date |> String.ends_with?(m)
+  end)
+  |> Enum.map(fn month ->
+    %{year: month.date |> String.split("-") |> hd(), temp: month.avg_temp}
+  end)
+```
+
+## Show
+
+```elixir
+Kino.DataTable.new(res)
+```
+
+<!-- livebook:{"attrs":{"chart_title":null,"height":400,"layers":[{"active":true,"chart_type":"point","color_field":null,"color_field_aggregate":null,"color_field_bin":false,"color_field_scale_scheme":null,"color_field_type":null,"data_variable":"res","geodata_color":"blue","latitude_field":null,"longitude_field":null,"x_field":"year","x_field_aggregate":null,"x_field_bin":false,"x_field_scale_type":null,"x_field_type":"temporal","y_field":"temp","y_field_aggregate":null,"y_field_bin":false,"y_field_scale_type":null,"y_field_type":"quantitative"}],"vl_alias":"Elixir.VegaLite","width":800},"chunks":null,"kind":"Elixir.KinoVegaLite.ChartCell","livebook_object":"smart_cell"} -->
+
+```elixir
+VegaLite.new(width: 800, height: 400)
+|> VegaLite.data_from_values(res, only: ["year", "temp"])
+|> VegaLite.mark(:point)
+|> VegaLite.encode_field(:x, "year", type: :temporal)
+|> VegaLite.encode_field(:y, "temp", type: :quantitative)
+```
+
+<!-- livebook:{"branch_parent_index":0} -->
+
+## Day
+
+```elixir
+res =
+  data =
+  File.read!("F:/Git/WeatherStats/data/bremen.json")
+  |> Jason.decode!(keys: :atoms)
+  |> Enum.filter(fn entry ->
+    entry.date
+    |> String.ends_with?(
+      "#{String.pad_leading(DateTime.utc_now().month |> Integer.to_string(), 2, "0")}-#{String.pad_leading(DateTime.utc_now().day |> Integer.to_string(), 2, "0")}"
+    )
+  end)
+  |> Enum.map(fn day ->
+    %{year: day.date |> String.split("-") |> hd(), temp: day.avg_temp}
+  end)
+
+res
+|> Enum.min_max()
+```
+
+```elixir
+Kino.DataTable.new(res)
+```
+
+```elixir
+VegaLite.new(width: 800, height: 400)
+|> VegaLite.data_from_values(res, only: ["year", "temp"])
+|> VegaLite.mark(:point)
+|> VegaLite.encode_field(:x, "year", type: :temporal)
+|> VegaLite.encode_field(:y, "temp", type: :quantitative)
+```
+
+```elixir
+data =
+  File.read!("F:/Git/WeatherStats/data/bremen.json")
+  |> Jason.decode!(keys: :atoms)
+
+res =
+  1..Calendar.ISO.days_in_month(2022, DateTime.utc_now().month)
+  |> Enum.map(fn day ->
+    day_data =
+      data
+      |> Enum.filter(fn entry ->
+        entry.date
+        |> String.match?(
+          ~r/20\d\d-#{String.pad_leading("#{DateTime.utc_now().month}", 2, "0")}-#{String.pad_leading("#{day}", 2, "0")}/
+        )
+      end)
+
+    avg_temp =
+      (Enum.reduce(day_data, 0, fn entry, acc -> acc + entry.avg_temp end) / length(day_data))
+      |> Float.round(1)
+
+    %{day: day, temp: avg_temp}
+  end)
+```
+
+<!-- livebook:{"attrs":{"chart_title":null,"height":400,"layers":[{"active":true,"chart_type":"bar","color_field":null,"color_field_aggregate":null,"color_field_bin":false,"color_field_scale_scheme":null,"color_field_type":null,"data_variable":"res","geodata_color":"blue","latitude_field":null,"longitude_field":null,"x_field":"day","x_field_aggregate":null,"x_field_bin":false,"x_field_scale_type":null,"x_field_type":"quantitative","y_field":"temp","y_field_aggregate":null,"y_field_bin":false,"y_field_scale_type":null,"y_field_type":"quantitative"}],"vl_alias":"Elixir.VegaLite","width":800},"chunks":null,"kind":"Elixir.KinoVegaLite.ChartCell","livebook_object":"smart_cell"} -->
+
+```elixir
+VegaLite.new(width: 800, height: 400)
+|> VegaLite.data_from_values(res, only: ["day", "temp"])
+|> VegaLite.mark(:bar)
+|> VegaLite.encode_field(:x, "day", type: :quantitative)
+|> VegaLite.encode_field(:y, "temp", type: :quantitative)
+```
+
+<!-- livebook:{"branch_parent_index":0} -->
+
+## Month running
+
+```elixir
+data =
+  File.read!("F:/Git/WeatherStats/data/bremen.json")
+  |> Jason.decode!(keys: :atoms)
+
+days =
+  1..DateTime.utc_now().day
+  |> Enum.map(&String.pad_leading("#{&1}", 2, "0"))
+  |> Enum.join("|")
+
+days_data =
+  data
+  |> Enum.filter(fn entry ->
+    entry.date
+    |> String.match?(
+      ~r/20\d\d-#{String.pad_leading("#{DateTime.utc_now().month}", 2, "0")}-(#{days})/
+    )
+  end)
+
+(Enum.reduce(days_data, 0, fn day, acc ->
+   acc + day.avg_temp
+ end) / length(days_data))
+|> Float.round(1)
+```
