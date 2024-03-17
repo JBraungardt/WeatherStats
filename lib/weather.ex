@@ -3,6 +3,8 @@ defmodule Weather do
   # id: "P131" Schonungen - Mainberg
   defdelegate download_history(id, city), to: Weather.Growler
 
+  defdelegate download_history_for_year(id, city, year), to: Weather.Growler
+
   defdelegate calc_avgs(city), to: Weather.Stats
 
   def stats_for_month(id, month, year) do

@@ -1,86 +1,86 @@
 [
   {
     "01": {
-      "avg_rain": 56.8,
+      "avg_temp": 1.6,
       "avg_sun": 44.9,
-      "avg_temp": 1.5
+      "avg_rain": 57.0
     }
   },
   {
     "02": {
-      "avg_rain": 42.9,
-      "avg_sun": 70.4,
-      "avg_temp": 1.9
+      "avg_temp": 1.9,
+      "avg_sun": 70.8,
+      "avg_rain": 42.8
     }
   },
   {
     "03": {
-      "avg_rain": 46.5,
-      "avg_sun": 114.1,
-      "avg_temp": 4.6
+      "avg_temp": 4.6,
+      "avg_sun": 113.8,
+      "avg_rain": 47.1
     }
   },
   {
     "04": {
-      "avg_rain": 43.3,
-      "avg_sun": 170.8,
-      "avg_temp": 8.5
+      "avg_temp": 8.5,
+      "avg_sun": 171.2,
+      "avg_rain": 43.3
     }
   },
   {
     "05": {
-      "avg_rain": 57.2,
-      "avg_sun": 211.7,
-      "avg_temp": 12.9
+      "avg_temp": 12.9,
+      "avg_sun": 212.0,
+      "avg_rain": 56.7
     }
   },
   {
     "06": {
-      "avg_rain": 65.0,
-      "avg_sun": 208.8,
-      "avg_temp": 16.0
+      "avg_temp": 16.1,
+      "avg_sun": 210.3,
+      "avg_rain": 65.5
     }
   },
   {
     "07": {
-      "avg_rain": 74.9,
-      "avg_sun": 203.5,
-      "avg_temp": 17.7
+      "avg_temp": 17.7,
+      "avg_sun": 203.4,
+      "avg_rain": 75.9
     }
   },
   {
     "08": {
-      "avg_rain": 72.3,
+      "avg_temp": 17.4,
       "avg_sun": 195.5,
-      "avg_temp": 17.4
+      "avg_rain": 72.4
     }
   },
   {
     "09": {
-      "avg_rain": 58.2,
-      "avg_sun": 146.6,
-      "avg_temp": 14.0
+      "avg_temp": 14.0,
+      "avg_sun": 147.7,
+      "avg_rain": 57.5
     }
   },
   {
     "10": {
-      "avg_rain": 55.3,
-      "avg_sun": 105.6,
-      "avg_temp": 9.9
+      "avg_temp": 9.9,
+      "avg_sun": 105.0,
+      "avg_rain": 56.5
     }
   },
   {
     "11": {
-      "avg_rain": 55.7,
-      "avg_sun": 52.9,
-      "avg_temp": 5.5
+      "avg_temp": 5.5,
+      "avg_sun": 52.6,
+      "avg_rain": 56.5
     }
   },
   {
     "12": {
-      "avg_rain": 60.7,
+      "avg_temp": 2.7,
       "avg_sun": 37.5,
-      "avg_temp": 2.7
+      "avg_rain": 60.7
     }
   }
 ]

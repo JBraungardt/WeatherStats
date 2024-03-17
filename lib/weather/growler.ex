@@ -11,28 +11,32 @@ defmodule Weather.Growler do
       end
 
     part_2 =
-      for year <- 2000..2022, month <- 1..12 do
+      for year <- 2000..2024, month <- 1..12 do
         {year, month}
       end
 
-    month_to_fetch = part_1 ++ part_2 ++ [{2023, 1}]
+    month_to_fetch = part_1 ++ part_2 ++ [{2024, 1}]
 
     month_to_fetch
-    |> Enum.map(fn {year, month} ->
-      fetch(id, "1.#{month}.#{year}")
-      |> Enum.filter(&Record.is_valid/1)
-    end)
-    |> List.flatten()
-    |> Enum.sort(fn %Record{date: date_1}, %Record{date: date_2} ->
-      Date.compare(date_1, date_2) == :lt
-    end)
-    |> Enum.dedup()
+    |> get_data_for_months(id)
     |> FileUtil.write_to_bin_file("data/#{city}.bin")
     |> FileUtil.write_to_json_file("data/#{city}.json")
   end
 
-  def fetch(id, date, number_of_weeks \\ 6) do
+  def download_history_for_year(id, city, year) do
+    month_to_fetch = for month <- 1..12, do: {year, month}
+
+    (month_to_fetch ++ [{year + 1, 1}])
+    |> get_data_for_months(id)
+    |> Enum.filter(fn %Record{date: date} -> date.year == year end)
+    |> FileUtil.write_to_bin_file("data/#{city}_#{year}.bin")
+    |> FileUtil.write_to_json_file("data/#{city}_#{year}.json")
+  end
+
+  def fetch(id, date) do
     IO.puts("fetching #{date}")
+
+    number_of_weeks = 6
 
     resp =
       Req.get!(@download_url,
@@ -44,5 +48,18 @@ defmodule Weather.Growler do
     |> Enum.map(&Floki.text/1)
     |> Enum.chunk_every(8)
     |> Enum.map(&Record.new/1)
+  end
+
+  defp get_data_for_months(months, id) do
+    months
+    |> Enum.map(fn {year, month} ->
+      fetch(id, "1.#{month}.#{year}")
+      |> Enum.filter(&Record.is_valid/1)
+    end)
+    |> List.flatten()
+    |> Enum.sort(fn %Record{date: date_1}, %Record{date: date_2} ->
+      Date.compare(date_1, date_2) == :lt
+    end)
+    |> Enum.dedup()
   end
 end
