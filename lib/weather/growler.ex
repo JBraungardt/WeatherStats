@@ -15,7 +15,7 @@ defmodule Weather.Growler do
         {year, month}
       end
 
-    month_to_fetch = part_1 ++ part_2 ++ [{2024, 1}]
+    month_to_fetch = part_1 ++ part_2 ++ [{2025, 1}]
 
     month_to_fetch
     |> get_data_for_months(id)

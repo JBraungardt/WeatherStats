@@ -2,85 +2,85 @@
   {
     "01": {
       "avg_temp": 1.6,
-      "avg_sun": 44.9,
-      "avg_rain": 57.0
+      "avg_sun": 45.2,
+      "avg_rain": 57.3
     }
   },
   {
     "02": {
-      "avg_temp": 1.9,
-      "avg_sun": 70.8,
-      "avg_rain": 42.8
+      "avg_temp": 2.0,
+      "avg_sun": 70.3,
+      "avg_rain": 43.3
     }
   },
   {
     "03": {
-      "avg_temp": 4.6,
-      "avg_sun": 113.8,
+      "avg_temp": 4.7,
+      "avg_sun": 113.6,
       "avg_rain": 47.1
     }
   },
   {
     "04": {
       "avg_temp": 8.5,
-      "avg_sun": 171.2,
-      "avg_rain": 43.3
+      "avg_sun": 170.8,
+      "avg_rain": 43.6
     }
   },
   {
     "05": {
       "avg_temp": 12.9,
-      "avg_sun": 212.0,
-      "avg_rain": 56.7
+      "avg_sun": 212.6,
+      "avg_rain": 57.2
     }
   },
   {
     "06": {
       "avg_temp": 16.1,
-      "avg_sun": 210.3,
-      "avg_rain": 65.5
+      "avg_sun": 210.1,
+      "avg_rain": 66.2
     }
   },
   {
     "07": {
       "avg_temp": 17.7,
-      "avg_sun": 203.4,
+      "avg_sun": 203.8,
       "avg_rain": 75.9
     }
   },
   {
     "08": {
       "avg_temp": 17.4,
-      "avg_sun": 195.5,
-      "avg_rain": 72.4
+      "avg_sun": 196.1,
+      "avg_rain": 72.1
     }
   },
   {
     "09": {
       "avg_temp": 14.0,
-      "avg_sun": 147.7,
-      "avg_rain": 57.5
+      "avg_sun": 148.3,
+      "avg_rain": 58.2
     }
   },
   {
     "10": {
       "avg_temp": 9.9,
-      "avg_sun": 105.0,
+      "avg_sun": 105.3,
       "avg_rain": 56.5
     }
   },
   {
     "11": {
       "avg_temp": 5.5,
-      "avg_sun": 52.6,
-      "avg_rain": 56.5
+      "avg_sun": 52.1,
+      "avg_rain": 56.4
     }
   },
   {
     "12": {
-      "avg_temp": 2.7,
-      "avg_sun": 37.5,
-      "avg_rain": 60.7
+      "avg_temp": 2.8,
+      "avg_sun": 37.1,
+      "avg_rain": 62.4
     }
   }
 ]
