@@ -49,7 +49,7 @@ res =
 Kino.DataTable.new(res)
 ```
 
-<!-- livebook:{"attrs":{"chart_title":null,"height":400,"layers":[{"active":true,"chart_type":"point","color_field":null,"color_field_aggregate":null,"color_field_bin":false,"color_field_scale_scheme":null,"color_field_type":null,"data_variable":"res","geodata_color":"blue","latitude_field":null,"longitude_field":null,"x_field":"year","x_field_aggregate":null,"x_field_bin":false,"x_field_scale_type":null,"x_field_type":"temporal","y_field":"temp","y_field_aggregate":null,"y_field_bin":false,"y_field_scale_type":null,"y_field_type":"quantitative"}],"vl_alias":"Elixir.VegaLite","width":800},"chunks":null,"kind":"Elixir.KinoVegaLite.ChartCell","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":"eyJjaGFydF90aXRsZSI6bnVsbCwiaGVpZ2h0Ijo0MDAsImxheWVycyI6W3siYWN0aXZlIjp0cnVlLCJjaGFydF90eXBlIjoicG9pbnQiLCJjb2xvcl9maWVsZCI6bnVsbCwiY29sb3JfZmllbGRfYWdncmVnYXRlIjpudWxsLCJjb2xvcl9maWVsZF9iaW4iOmZhbHNlLCJjb2xvcl9maWVsZF9zY2FsZV9zY2hlbWUiOm51bGwsImNvbG9yX2ZpZWxkX3R5cGUiOm51bGwsImRhdGFfdmFyaWFibGUiOiJyZXMiLCJnZW9kYXRhX2NvbG9yIjoiYmx1ZSIsImxhdGl0dWRlX2ZpZWxkIjpudWxsLCJsb25naXR1ZGVfZmllbGQiOm51bGwsInhfZmllbGQiOiJ5ZWFyIiwieF9maWVsZF9hZ2dyZWdhdGUiOm51bGwsInhfZmllbGRfYmluIjpmYWxzZSwieF9maWVsZF9zY2FsZV90eXBlIjpudWxsLCJ4X2ZpZWxkX3R5cGUiOiJ0ZW1wb3JhbCIsInlfZmllbGQiOiJ0ZW1wIiwieV9maWVsZF9hZ2dyZWdhdGUiOm51bGwsInlfZmllbGRfYmluIjpmYWxzZSwieV9maWVsZF9zY2FsZV90eXBlIjpudWxsLCJ5X2ZpZWxkX3R5cGUiOiJxdWFudGl0YXRpdmUifV0sInZsX2FsaWFzIjoiRWxpeGlyLlZlZ2FMaXRlIiwid2lkdGgiOjgwMH0","chunks":null,"kind":"Elixir.KinoVegaLite.ChartCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 VegaLite.new(width: 800, height: 400)
@@ -119,7 +119,7 @@ res =
   end)
 ```
 
-<!-- livebook:{"attrs":{"chart_title":null,"height":400,"layers":[{"active":true,"chart_type":"bar","color_field":null,"color_field_aggregate":null,"color_field_bin":false,"color_field_scale_scheme":null,"color_field_type":null,"data_variable":"res","geodata_color":"blue","latitude_field":null,"longitude_field":null,"x_field":"day","x_field_aggregate":null,"x_field_bin":false,"x_field_scale_type":null,"x_field_type":"quantitative","y_field":"temp","y_field_aggregate":null,"y_field_bin":false,"y_field_scale_type":null,"y_field_type":"quantitative"}],"vl_alias":"Elixir.VegaLite","width":800},"chunks":null,"kind":"Elixir.KinoVegaLite.ChartCell","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":"eyJjaGFydF90aXRsZSI6bnVsbCwiaGVpZ2h0Ijo0MDAsImxheWVycyI6W3siYWN0aXZlIjp0cnVlLCJjaGFydF90eXBlIjoiYmFyIiwiY29sb3JfZmllbGQiOm51bGwsImNvbG9yX2ZpZWxkX2FnZ3JlZ2F0ZSI6bnVsbCwiY29sb3JfZmllbGRfYmluIjpmYWxzZSwiY29sb3JfZmllbGRfc2NhbGVfc2NoZW1lIjpudWxsLCJjb2xvcl9maWVsZF90eXBlIjpudWxsLCJkYXRhX3ZhcmlhYmxlIjoicmVzIiwiZ2VvZGF0YV9jb2xvciI6ImJsdWUiLCJsYXRpdHVkZV9maWVsZCI6bnVsbCwibG9uZ2l0dWRlX2ZpZWxkIjpudWxsLCJ4X2ZpZWxkIjoiZGF5IiwieF9maWVsZF9hZ2dyZWdhdGUiOm51bGwsInhfZmllbGRfYmluIjpmYWxzZSwieF9maWVsZF9zY2FsZV90eXBlIjpudWxsLCJ4X2ZpZWxkX3R5cGUiOiJxdWFudGl0YXRpdmUiLCJ5X2ZpZWxkIjoidGVtcCIsInlfZmllbGRfYWdncmVnYXRlIjpudWxsLCJ5X2ZpZWxkX2JpbiI6ZmFsc2UsInlfZmllbGRfc2NhbGVfdHlwZSI6bnVsbCwieV9maWVsZF90eXBlIjoicXVhbnRpdGF0aXZlIn1dLCJ2bF9hbGlhcyI6IkVsaXhpci5WZWdhTGl0ZSIsIndpZHRoIjo4MDB9","chunks":null,"kind":"Elixir.KinoVegaLite.ChartCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 VegaLite.new(width: 800, height: 400)
@@ -156,4 +156,36 @@ days_data =
    acc + day.avg_temp
  end) / length(days_data))
 |> Float.round(1)
+```
+
+```elixir
+hb =
+  File.read!("../WeatherStats/data/bremen.json")
+  |> Jason.decode!(keys: :atoms)
+  |> Enum.filter(fn entry ->
+    entry.date
+    |> String.starts_with?("2024-12")
+  end)
+  |> Enum.map(&%{day: &1.date |> String.split("-") |> List.last(), sun: &1.sun, loc: "hb"})
+
+sw =
+  File.read!("../WeatherStats/data/schweinfurt.json")
+  |> Jason.decode!(keys: :atoms)
+  |> Enum.filter(fn entry ->
+    entry.date
+    |> String.starts_with?("2024-12")
+  end)
+  |> Enum.map(&%{day: &1.date |> String.split("-") |> List.last(), sun: &1.sun, loc: "sw"})
+
+sun_data = hb ++ sw
+```
+
+```elixir
+VegaLite.new(widht: [step: 31])
+|> VegaLite.data_from_values(sun_data, only: ["day", "sun", "loc"])
+|> VegaLite.mark(:bar)
+|> VegaLite.encode_field(:column, "day", type: :ordinal, spacing: 1)
+|> VegaLite.encode_field(:y, "sun", type: :quantitative)
+|> VegaLite.encode_field(:x, "loc", title: nil)
+|> VegaLite.encode_field(:color, "loc")
 ```
